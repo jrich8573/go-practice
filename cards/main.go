@@ -1,25 +1,31 @@
 package main
 
-import "fmt"
-
 func main() {
 
 	// identical assignments
 	// var card string = "Ace of Spades"
 	// card := newCard()
-	cards := []string{"Ace of Diamonds", newCard()} // new cards
-	cards = append(cards, "Six of Spades")          // add a card to cards
+	// cards := []string{"Ace of Diamonds", newCard()} // new cards as a slice
+	// cards := deck{"Ace of Diamonds", newCard()}
+	// cards = append(cards, "Six of Spades") // add a card to cards
+	cards := newDeck()
+	hand, remainingCards := deal(cards, 5)
 
-	for i, card := range cards {
-		fmt.Println(i, card)
-	}
-	fmt.Println(cards)
+	hand.print()
+	remainingCards.print()
+	//cards.print()
+
+	//	for i, card := range cards {
+	//		fmt.Println(i, card)
+	//	}
+	//
+	// fmt.Println(cards)
 }
 
-func newCard() string { // string return type
+//func newCard() string { // string return type
 
-	return "Five of Diamonds"
-}
+//return "Five of Diamonds"
+//}
 
 /*
 Notes:
@@ -36,4 +42,7 @@ Notes:
 	a. arrary = fixed length list of data
 	b. slice = an array that can grow and shrink
 7. in a slice = every element must be of the same type
+8. slicing slices data[n:m] includes n doesn't include m
+	a. data[:m] is like above
+	b. data[:] include everything from the start, not including the last
 */
