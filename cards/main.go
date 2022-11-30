@@ -8,11 +8,11 @@ func main() {
 	// cards := []string{"Ace of Diamonds", newCard()} // new cards as a slice
 	// cards := deck{"Ace of Diamonds", newCard()}
 	// cards = append(cards, "Six of Spades") // add a card to cards
-	cards := newDeck()
-	hand, remainingCards := deal(cards, 5)
+	//	cards := newDeck()
+	//	hand, remainingCards := deal(cards, 5)
 
-	hand.print()
-	remainingCards.print()
+	//	hand.print()
+	//	remainingCards.print()
 	//cards.print()
 
 	//	for i, card := range cards {
@@ -20,6 +20,13 @@ func main() {
 	//	}
 	//
 	// fmt.Println(cards)
+
+	//cards := newDeck()
+	//fmt.Println(cards.toString())
+	//cards.saveToFile("mycards")
+
+	cards := newDeckFromFile("mycards")
+	cards.print()
 }
 
 //func newCard() string { // string return type

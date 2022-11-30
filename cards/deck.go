@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"strings"
+)
 
 // create a new type of deck, which is a slice of strings
 type deck []string
@@ -29,4 +33,23 @@ func (d deck) print() { // (d deck) is called a receiver
 
 func deal(d deck, handSize int) (deck, deck) { // return two values of type deck
 	return d[:handSize], d[handSize:]
+}
+
+func (d deck) toString() string {
+	s := []string(d) //returns a slice of strings
+	return strings.Join(s, ",")
+}
+
+func (d deck) saveToFile(filename string) error {
+	return os.WriteFile(filename, []byte(d.toString()), 0666)
+}
+
+func newDeckFromFile(filename string) deck {
+	bs, err := os.ReadFile(filename) //bs == byte slice
+	if err != nil {
+		fmt.Println("Error:", err)
+		os.Exit(1)
+	}
+	s := strings.Split(string(bs), ",") //string(bs)is type conversion byte slice to string
+	return deck(s)
 }
